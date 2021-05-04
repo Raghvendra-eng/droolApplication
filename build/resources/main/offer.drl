@@ -1,0 +1,27 @@
+
+package KieRule;
+import com.order.offer.Cart;
+
+rule "High_Discount"
+
+when
+cartObject : Cart( totalPrice >= 10000);
+then
+cartObject.setDiscount(15);
+end;
+
+rule "Medium_Discount"
+
+when
+cartObject : Cart( totalPrice < 10000 && totalPrice >= 5000);
+then
+cartObject.setDiscount(10);
+end;
+
+rule "Low_Discount"
+
+when
+cartObject : Cart( totalPrice<5000 && totalPrice >= 3000);
+then
+cartObject.setDiscount(5);
+end;
